@@ -3,5 +3,6 @@ Enables build of Scala apps.
 
 This has:
 - Oracle Java
+- JCE Unlimited Security Policy
 - sbt
 - activator

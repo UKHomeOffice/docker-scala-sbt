@@ -1,0 +1,8 @@
+[repositories]
+  local
+  lib-releases: https://artifactory.digital.homeoffice.gov.uk/artifactory/libs-release/
+  plugins-releases: https://artifactory.digital.homeoffice.gov.uk/artifactory/plugins-release/
+  lib-snapshots: https://artifactory.digital.homeoffice.gov.uk/artifactory/libs-snapshot/
+  plugins-snapshots: https://artifactory.digital.homeoffice.gov.uk/artifactory/plugins-snapshot/
+  remote-ivy-repos: https://artifactory.digital.homeoffice.gov.uk/artifactory/remote-ivy-repos/, [organisation]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
+  remote-repos: https://artifactory.digital.homeoffice.gov.uk/artifactory/remote-repos/
