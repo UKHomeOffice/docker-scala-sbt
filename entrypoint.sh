@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-envsubst < /root/.ivy2/.credentials.sub > /root/.ivy2/.credentials
-rm -f /root/.ivy2/.credentials.sub
+envsubst < /root/.sbt/.credentials.sub > /root/.sbt/.credentials
+rm -f /root/.sbt/.credentials.sub
+mkdir -p /root/.ivy2/
+cp /root/.sbt/.credentials /root/.ivy2/.credentials
 
-CMD=( "$@" )
+CMD=( "${@:1}" )
 
 exec ${CMD[*]}
