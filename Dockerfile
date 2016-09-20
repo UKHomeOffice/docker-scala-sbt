@@ -33,9 +33,8 @@ RUN alternatives --set java /usr/java/jdk1.8.0_101/jre/bin/java
 ENV PATH=/opt/activator-dist-${ACTIVATOR_VER}:$PATH \
     ARTIFACTORY_USERNAME=user \
     ARTIFACTORY_PASSWORD=pass \
-    SBT_CREDENTIALS="/root/.ivy2/.credentials"
-
-#SBT_OPTS="-Dsbt.override.build.repos=true -Dsbt.repository.config=/root/.ivy2/repositories.conf" \
+    SBT_CREDENTIALS="/root/.ivy2/.credentials" \
+    SBT_OPTS="-Dsbt.override.build.repos=true"
 
 RUN mkdir -p /root/.ivy2 && mkdir -p /root/.sbt/0.13/plugins/
 COPY credentials.sbt /root/.sbt/0.13/plugins/
