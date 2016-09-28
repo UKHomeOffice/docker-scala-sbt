@@ -1,4 +1,4 @@
-FROM quay.io/ukhomeofficedigital/centos-base:v0.3.0
+FROM quay.io/ukhomeofficedigital/centos-base:v0.4.0
 
 ENV ACTIVATOR_VER=1.3.10
 ENV ACTIVATOR_DIR=typesafe-activator-${ACTIVATOR_VER}
@@ -6,7 +6,8 @@ ENV PATH=/opt/activator-dist-${ACTIVATOR_VER}:${PATH}
 ENV ARTIFACTORY_USERNAME=user \
     ARTIFACTORY_PASSWORD=pass \
     SBT_CREDENTIALS="/root/.sbt/.credentials" \
-    SBT_OPTS="-Dsbt.override.build.repos=true -Dsbt.ivy.home=/code/.ivy2"
+    SBT_OPTS="-Dsbt.override.build.repos=true -Dsbt.ivy.home=/code/.ivy2" \
+    USE_COURSIER=false
 
 RUN yum clean all && \
     yum update -y && \
