@@ -6,7 +6,7 @@ ENV PATH=/opt/activator-dist-${ACTIVATOR_VER}/bin:${PATH}
 ENV ARTIFACTORY_USERNAME=user \
     ARTIFACTORY_PASSWORD=pass \
     SBT_CREDENTIALS="/root/.sbt/.credentials" \
-    SBT_OPTS="-Dsbt.override.build.repos=true -Dsbt.ivy.home=/code/.ivy2" \
+    SBT_OPTS="-Dsbt.override.build.repos=true -Dsbt.ivy.home=.ivy2" \
     USE_COURSIER=false
 
 RUN yum clean all && \
