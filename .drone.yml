@@ -6,8 +6,7 @@ pipeline:
     commands:
       - docker build -t scala-sbt .
     when:
-      event: push
-      branch: master
+      event: [push, tag]
 
   image_to_quay:
     image: docker:1.11
