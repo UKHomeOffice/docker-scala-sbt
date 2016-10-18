@@ -13,4 +13,4 @@ fi
 
 CMD=( "${@:1}" )
 
-exec ${CMD[*]}
+eval "${CMD[*]}"
