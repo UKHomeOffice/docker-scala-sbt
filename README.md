@@ -3,10 +3,10 @@
 Enables build of Scala apps.
 
 This has:
-- Oracle Java
-- JCE Unlimited Security Policy
 - sbt
 - activator
+- OpenJDK
+- sonar-scanner
 
 ### Usage
 
@@ -22,7 +22,7 @@ pipeline:
   build:
     commands:
        - "/root/entrypoint.sh 'sbt clean update test assembly'"
-    image: quay.io/ukhomeofficedigital/scala-sbt:v0.1.4
+    image: quay.io/ukhomeofficedigital/scala-sbt:v0.2.0
     when:
       event:
         - push
