@@ -8,7 +8,7 @@ ENV ARTIFACTORY_USERNAME=user \
     ARTIFACTORY_PASSWORD=pass \
     SBT_CREDENTIALS="/root/.sbt/.credentials" \
     SBT_OPTS="-Dsbt.override.build.repos=true -Dsbt.ivy.home=.ivy2" \
-    SONAR_SCANNER_OPTS="-Xmx512m -Dsonar.host.url=https://sonarqube.ops.digital.homeoffice.gov.uk/"
+    SONAR_SCANNER_OPTS="-Xmx512m -Dsonar.host.url=http://sonarqube.digital.homeoffice.gov.uk/"
 
 RUN yum clean all && \
     yum update -y && \
