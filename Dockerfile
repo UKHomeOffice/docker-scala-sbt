@@ -11,7 +11,7 @@ ENV ARTIFACTORY_USERNAME=user \
     SONAR_SCANNER_OPTS="-Xmx512m -Dsonar.host.url=http://sonarqube.digital.homeoffice.gov.uk/"
 
 RUN yum clean all && \
-    yum update -y && \
+    yum update -y --exclude iputils* --exclude filesystem* && \
     yum install -y wget curl unzip gettext git && \
     yum clean all && \
     rpm --rebuilddb
