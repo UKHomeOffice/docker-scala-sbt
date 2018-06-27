@@ -1,22 +1,25 @@
 pipeline:
-  build_docker_image:
-    image: docker:17.09.0-ce
+  build:
     environment:
-      - DOCKER_HOST=tcp://172.17.0.1:2375
-    commands:
-      - docker build -t scala-sbt .
+      - DOCKER_USERNAME=ukhomeofficedigital+drone
+    image: quay.io/ukhomeofficedigital/drone-docker
+    registry: quay.io
+    repo: quay.io/ukhomeofficedigital/scala-sbt
+    secrets: [ docker_password ]
+    tags:
+      - ${DRONE_COMMIT_SHA}
+      - latest
     when:
-      event: [push, tag]
+      event: push
 
-  image_to_quay:
-    image: docker:17.09.0-ce
-    secrets:
-      - docker_password
+  build_tag:
     environment:
-      - DOCKER_HOST=tcp://172.17.0.1:2375
-    commands:
-      - docker login -u="ukhomeofficedigital+drone" -p=$${DOCKER_PASSWORD} quay.io
-      - docker tag scala-sbt quay.io/ukhomeofficedigital/scala-sbt:$${DRONE_TAG}
-      - docker push quay.io/ukhomeofficedigital/scala-sbt:$${DRONE_TAG}
+      - DOCKER_USERNAME=ukhomeofficedigital+drone
+    image: quay.io/ukhomeofficedigital/drone-docker
+    registry: quay.io
+    repo: quay.io/ukhomeofficedigital/scala-sbt
+    secrets: [ docker_password ]
+    tags:
+      - ${DRONE_TAG}
     when:
       event: tag
