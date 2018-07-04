@@ -15,6 +15,13 @@ RUN yum clean all && \
 RUN curl https://bintray.com/sbt/rpm/rpm | tee /etc/yum.repos.d/bintray-sbt-rpm.repo && \
     yum install sbt -y
 
+# Install Scala.js dependencies
+RUN \
+  curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+  apt-get install -y nodejs && \
+  npm install jsdom@v9 source-map-support
+
+
 RUN mkdir -p /root/.sbt/0.13/plugins/
 COPY credentials.sbt /root/.sbt/0.13/plugins/
 COPY repositories /root/.sbt
