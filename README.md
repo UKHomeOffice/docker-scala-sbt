@@ -1,21 +1,22 @@
-# docker-scala-sbt
+# docker-scala-sbtjs
 
-Enables build of Scala apps.
+Enables build of ScalaJs apps.
 
 This has:
 - sbt
 - OpenJDK
+-nodejs
 
 ### Usage
 
-This image is to be used to build your scala apps. Below in an example of how you would do this in drone.
+This image is to be used to build your scala(js) apps. Below in an example of how you would do this in drone.
 
 Contents of .drone.yml:
 ```
   build:
     commands:
-       - "/root/entrypoint.sh 'sbt clean update test assembly'"
-    image: quay.io/ukhomeofficedigital/scala-sbt:v0.3.0
+       - "/root/entrypoint.sh 'sbt clean update assembly'"
+    image: quay.io/ukhomeofficedigital/scala-sbtjs:latest
     environment:
       - ARTIFACTORY_USERNAME=username
     secrets:
