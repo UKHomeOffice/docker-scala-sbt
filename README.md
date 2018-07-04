@@ -18,6 +18,8 @@ Contents of .drone.yml:
     image: quay.io/ukhomeofficedigital/scala-sbt:v0.3.0
     environment:
       - ARTIFACTORY_USERNAME=username
+    secrets:
+      - ARTIFACTORY_PASSWORD
     when:
       event:
         - push
