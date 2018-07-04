@@ -9,7 +9,7 @@ This has:
 
 ### Usage
 
-This image is to be used to build your scala(js) apps. Below in an example of how you would do this in drone.
+This image is to be used to build your scalas-JSs apps. Below in an example of how you would do this in drone.
 
 Contents of .drone.yml:
 ```
