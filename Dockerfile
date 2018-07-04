@@ -17,6 +17,7 @@ RUN curl https://bintray.com/sbt/rpm/rpm | tee /etc/yum.repos.d/bintray-sbt-rpm.
 
 # Install Scala.js dependencies
 RUN \
+  curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo && \
   curl -sL https://raw.githubusercontent.com/nodesource/distributions/master/rpm/setup_6.x | bash - && \
   yum install -y nodejs && \
   yum install -y yarn && \
