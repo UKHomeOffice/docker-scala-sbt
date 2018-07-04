@@ -19,6 +19,7 @@ RUN curl https://bintray.com/sbt/rpm/rpm | tee /etc/yum.repos.d/bintray-sbt-rpm.
 RUN \
   curl -sL https://raw.githubusercontent.com/nodesource/distributions/master/rpm/setup_6.x | bash - && \
   yum install -y nodejs && \
+  yum install -y yarn && \
   npm install jsdom@v9 source-map-support
 
 
