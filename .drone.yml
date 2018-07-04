@@ -4,7 +4,7 @@ pipeline:
       - DOCKER_USERNAME=ukhomeofficedigital+drone
     image: quay.io/ukhomeofficedigital/drone-docker
     registry: quay.io
-    repo: quay.io/ukhomeofficedigital/scala-sbt
+    repo: quay.io/ukhomeofficedigital/scala-sbt-nodejs
     secrets: [ docker_password ]
     tags:
       - ${DRONE_COMMIT_SHA}
@@ -17,7 +17,7 @@ pipeline:
       - DOCKER_USERNAME=ukhomeofficedigital+drone
     image: quay.io/ukhomeofficedigital/drone-docker
     registry: quay.io
-    repo: quay.io/ukhomeofficedigital/scala-sbt
+    repo: quay.io/ukhomeofficedigital/scala-sbt-nodejs
     secrets: [ docker_password ]
     tags:
       - ${DRONE_TAG}
