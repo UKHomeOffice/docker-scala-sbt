@@ -17,8 +17,8 @@ RUN curl https://bintray.com/sbt/rpm/rpm | tee /etc/yum.repos.d/bintray-sbt-rpm.
 
 # Install Scala.js dependencies
 RUN \
-  curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
-  apt-get install -y nodejs && \
+  curl -sL https://raw.githubusercontent.com/nodesource/distributions/master/rpm/setup_6.x | bash - && \
+  yum install -y nodejs && \
   npm install jsdom@v9 source-map-support
 
 
