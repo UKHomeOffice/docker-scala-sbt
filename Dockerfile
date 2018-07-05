@@ -13,7 +13,6 @@ RUN \
   npm install jsdom@v9 source-map-support
 
 # Install yarn
-
 RUN \
   curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo && \
   yum install -y yarn
