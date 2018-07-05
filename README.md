@@ -29,4 +29,4 @@ Contents of .drone.yml:
         - pull_request
 
 ```
-This build script expects ARTIFACTORY_PASSWORD to be set as a secret in Drone.
+This build script expects ARTIFACTORY_PASSWORD to be set as a secret in Drone.io.
