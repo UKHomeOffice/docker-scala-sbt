@@ -14,7 +14,8 @@ RUN \
 
 # Install yarn
 RUN \
-  npm install --global yarn
+  curl -o- -L https://yarnpkg.com/install.sh | bash
+
 
 
 ENTRYPOINT ["/root/entrypoint.sh"]
