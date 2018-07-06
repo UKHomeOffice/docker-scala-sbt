@@ -14,8 +14,7 @@ RUN \
 
 # Install yarn
 RUN \
-  curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo && \
-  yum install -y yarn && \
-  yarn -v
+  npm install --global yarn
+
 
 ENTRYPOINT ["/root/entrypoint.sh"]
