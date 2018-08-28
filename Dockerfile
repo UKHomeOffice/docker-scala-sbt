@@ -22,3 +22,5 @@ COPY .credentials.sub /root/.sbt/
 COPY entrypoint.sh /root/entrypoint.sh
 
 ENTRYPOINT ["/root/entrypoint.sh"]
+
+CMD ["sbt"]
