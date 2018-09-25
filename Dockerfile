@@ -15,8 +15,9 @@ RUN yum clean all && \
 RUN curl https://bintray.com/sbt/rpm/rpm | tee /etc/yum.repos.d/bintray-sbt-rpm.repo && \
     yum install sbt -y
 
-RUN mkdir -p /root/.sbt/0.13/plugins/
+RUN mkdir -p /root/.sbt/0.13/plugins/ /root/.sbt/1.0/plugins/
 COPY credentials.sbt /root/.sbt/0.13/plugins/
+COPY credentials.sbt /root/.sbt/1.0/plugins/
 COPY repositories /root/.sbt
 COPY .credentials.sub /root/.sbt/
 COPY entrypoint.sh /root/entrypoint.sh
