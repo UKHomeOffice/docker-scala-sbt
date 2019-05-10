@@ -15,6 +15,8 @@ RUN yum clean all && \
 RUN curl https://bintray.com/sbt/rpm/rpm | tee /etc/yum.repos.d/bintray-sbt-rpm.repo && \
     yum install sbt -y
 
+RUN sbt sbtVersion
+
 RUN mkdir -p /root/.sbt/0.13/plugins/ /root/.sbt/1.0/plugins/
 COPY credentials.sbt /root/.sbt/0.13/plugins/
 COPY credentials.sbt /root/.sbt/1.0/plugins/
