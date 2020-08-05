@@ -1,4 +1,4 @@
-FROM quay.io/ukhomeofficedigital/openjdk8:latest
+FROM quay.io/ukhomeofficedigital/openjdk11:latest
 
 ENV ARTIFACTORY_USERNAME=user \
     ARTIFACTORY_PASSWORD=pass \
