@@ -7,3 +7,4 @@
   remote-ivy-repos: https://artifactory.digital.homeoffice.gov.uk/artifactory/remote-ivy-repos/, [organisation]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
   remote-repos: https://artifactory.digital.homeoffice.gov.uk/artifactory/remote-repos/
   jcenter-cache: https://artifactory.digital.homeoffice.gov.uk/artifactory/jcenter-cache/
+  jitpack: https://artifactory.digital.homeoffice.gov.uk/artifactory/jitpack_remote/
