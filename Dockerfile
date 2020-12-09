@@ -5,7 +5,7 @@ ENV ARTIFACTORY_USERNAME=user \
     SBT_CREDENTIALS="/root/.sbt/.credentials" \
     SBT_OPTS="-Dsbt.override.build.repos=true -Dsbt.ivy.home=.ivy2"
 
-RUN yum update -y
+RUN yum update -y --exclude iputils* --exclude filesystem*
 RUN yum install -y curl git wget gettext wget fontconfig glibc-langpack-en
 
 #Install sbt
