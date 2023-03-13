@@ -8,3 +8,4 @@
   remote-repos: https://artifactory.digital.homeoffice.gov.uk/artifactory/remote-repos/
   jcenter-cache: https://artifactory.digital.homeoffice.gov.uk/artifactory/jcenter-cache/
   jitpack: https://artifactory.digital.homeoffice.gov.uk/artifactory/jitpack_remote/
+  sonatype: https://artifactory.digital.homeoffice.gov.uk/artifactory/sonatype-release-cache/
