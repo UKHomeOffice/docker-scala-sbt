@@ -32,7 +32,6 @@ steps:
     environment:
       AWS_REGION: eu-west-2
     commands:
-      - docker build -t 340268328991.dkr.ecr.eu-west-2.amazonaws.com/rtge/scala-sbt-default:$${DRONE_COMMIT_SHA} . --no-cache
       - docker build -t 340268328991.dkr.ecr.eu-west-2.amazonaws.com/rtge/scala-sbt-8jre:$${DRONE_COMMIT_SHA} . --no-cache -f Dockerfile-8jre
       - docker build -t 340268328991.dkr.ecr.eu-west-2.amazonaws.com/rtge/scala-sbt-11jre:$${DRONE_COMMIT_SHA} . --no-cache -f Dockerfile-11jre
       - docker build -t 340268328991.dkr.ecr.eu-west-2.amazonaws.com/rtge/scala-sbt-17jre:$${DRONE_COMMIT_SHA} . --no-cache -f Dockerfile-17jre
