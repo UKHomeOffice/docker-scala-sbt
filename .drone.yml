@@ -1,5 +1,13 @@
-pipeline:
-  build_default:
+kind: pipeline
+type: kubernetes
+name: scala-sbt
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+  - name: build-default
     environment:
       - DOCKER_USERNAME=ukhomeofficedigital+drone
     image: quay.io/ukhomeofficedigital/drone-docker
@@ -12,24 +20,12 @@ pipeline:
     when:
       event: push
 
-  build_tag:
+  - name: build-variations
     environment:
       - DOCKER_USERNAME=ukhomeofficedigital+drone
     image: quay.io/ukhomeofficedigital/drone-docker
     registry: quay.io
     repo: quay.io/ukhomeofficedigital/scala-sbt
-    secrets: [ docker_password ]
-    tags:
-      - ${DRONE_TAG}
-    when:
-      event: tag
-
-  build_variations:
-    environment:
-      - DOCKER_USERNAME=ukhomeofficedigital+drone
-    image: quay.io/ukhomeofficedigital/drone-docker
-    registry: quay.io
-    repo: quay.io/ukhomeofficedigital/scala-sbt-8jre
     commands:
       # wait for docker service to be up before running docker build
       - sleep 60
@@ -46,3 +42,4 @@ pipeline:
       - latest
     when:
       event: push
+
