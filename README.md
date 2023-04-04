@@ -4,7 +4,7 @@ Enables build of Scala apps.
 
 This has:
 - sbt
-- OpenJDK
+- Various versions of the Elipse Temurin JREs
 
 ### Usage
 
