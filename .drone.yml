@@ -49,25 +49,25 @@ steps:
         - push
         - tag
 
-  - name: push_build_image
-    image: plugins/ecr
-    settings:
-      registry: 340268328991.dkr.ecr.eu-west-2.amazonaws.com
-      repo: evw/elastic-sync
-      access_key:
-        from_secret: AWS_ACCESS_KEY_ID
-      secret_key:
-        from_secret: AWS_SECRET_ACCESS_KEY
-      tags:
-        - ${DRONE_COMMIT_SHA}
-        - latest
-    environment:
-      AWS_REGION: eu-west-2
-    when:
-      event:
-        - push
-    depends_on:
-      - build_image
+          #- name: push_build_image
+          #  image: plugins/ecr
+          #  settings:
+          #    registry: 340268328991.dkr.ecr.eu-west-2.amazonaws.com
+          #    repo: evw/elastic-sync
+          #    access_key:
+          #      from_secret: AWS_ACCESS_KEY_ID
+          #    secret_key:
+          #      from_secret: AWS_SECRET_ACCESS_KEY
+          #    tags:
+          #      - ${DRONE_COMMIT_SHA}
+          #      - latest
+          #  environment:
+          #    AWS_REGION: eu-west-2
+          #  when:
+          #    event:
+          #      - push
+          #  depends_on:
+          #    - build_image
 
 services:
 - name: docker
