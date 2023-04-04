@@ -21,15 +21,13 @@ steps:
       event: push
 
   - name: build-variations
-    environment:
-      - DOCKER_USERNAME=ukhomeofficedigital+drone
     image: quay.io/ukhomeofficedigital/drone-docker
     registry: quay.io
     repo: quay.io/ukhomeofficedigital/scala-sbt
     commands:
       # wait for docker service to be up before running docker build
       - sleep 60
-      - docker login -u={$$DOCKER_USERNAME} -p=$${DOCKER_PASSWORD} docker.digital.homeoffice.gov.uk
+      - docker login -u=ukhomeofficedigital+drone -p=$${DOCKER_PASSWORD} docker.digital.homeoffice.gov.uk
       - docker build -t scala-sbt-8jre:$${DRONE_COMMIT_SHA} -f Dockerfile-8jre .
       - docker build -t scala-sbt-11jre:$${DRONE_COMMIT_SHA} -f Dockerfile-11jre .
       - docker build -t scala-sbt-17jre:$${DRONE_COMMIT_SHA} -f Dockerfile-17jre .
