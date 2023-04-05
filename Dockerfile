@@ -12,7 +12,6 @@ RUN groupadd -r app -g 1000 && \
     mkdir -p /app && \
     chown -R app:app /app
 
-USER 1000
 WORKDIR /app
 
 # Download and install SBT. Use a fixed version, but of course, sbt will fetch

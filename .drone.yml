@@ -26,23 +26,6 @@ steps:
       event:
         - push
 
-  - name: build_image
-    pull: if-not-exists
-    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
-    environment:
-      AWS_REGION: eu-west-2
-    commands:
-      - docker build -t 340268328991.dkr.ecr.eu-west-2.amazonaws.com/rtge/scala-sbt:$${DRONE_COMMIT_SHA} .
-    volumes:
-      - name: dockerclientconfig
-        path: /root/.docker
-    depends_on:
-      - ecr-login
-    when:
-      event:
-        - push
-        - tag
-
   - name: push_build_image
     image: plugins/ecr
     settings:
@@ -61,7 +44,7 @@ steps:
       event:
         - push
     depends_on:
-      - build_image
+      - ecs-login
 
 services:
 - name: docker
