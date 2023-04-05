@@ -10,7 +10,7 @@ platform:
 steps:
   - build:
     environment:
-      - DOCKER_USERNAME="ukhomeofficedigital+drone"
+      DOCKER_USERNAME: ukhomeofficedigital+drone
     image: quay.io/ukhomeofficedigital/drone-docker
     registry: quay.io
     repo: quay.io/ukhomeofficedigital/scala-sbt
@@ -23,7 +23,7 @@ steps:
 
   - build_tag:
     environment:
-      - DOCKER_USERNAME="ukhomeofficedigital+drone"
+      DOCKER_USERNAME: ukhomeofficedigital+drone
     image: quay.io/ukhomeofficedigital/drone-docker
     registry: quay.io
     repo: quay.io/ukhomeofficedigital/scala-sbt
