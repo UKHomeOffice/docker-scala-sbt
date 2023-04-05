@@ -1,28 +1,36 @@
-FROM quay.io/ukhomeofficedigital/openjdk11:latest
+FROM quay.io/centos/centos:stream8
 
-ENV ARTIFACTORY_USERNAME=user \
-    ARTIFACTORY_PASSWORD=pass \
-    SBT_CREDENTIALS="/root/.sbt/.credentials" \
-    SBT_OPTS="-Dsbt.override.build.repos=true -Dsbt.ivy.home=.ivy2"
+RUN yum clean all
+RUN yum -y update
+RUN yum -y install curl git wget gettext wget fontconfig glibc-langpack-en
 
-RUN yum update -y --exclude iputils* --exclude filesystem*
-RUN yum install -y curl git wget gettext wget fontconfig glibc-langpack-en
+# Install the 3 LTE supported JDK's 8, 11 and 17
+RUN yum -y install java-1.8.0-openjdk.x86_64 java-1.8.0-openjdk-src.x86_64 java-11-openjdk.x86_64 java-11-openjdk-src.x86_64 java-17-openjdk.x86_64 java-17-openjdk-src.x86_64
 
-#Install sbt
-RUN curl https://bintray.com/sbt/rpm/rpm | tee /etc/yum.repos.d/bintray-sbt-rpm.repo && \
-    yum install sbt -y
+RUN groupadd -r app -g 1000 && \
+    useradd -r -g app -u 1000 app -d /app && \
+    mkdir -p /app && \
+    chown -R app:app /app
 
-# run sbt sbtVersion (but inside an empty directory due to sbt/sbt#1458)
-RUN mkdir -p /tmp/emptyDir
-RUN cd /tmp/emptyDir && sbt sbtVersion
+USER 1000
+WORKDIR /app
 
-RUN mkdir -p /root/.sbt/0.13/plugins/ /root/.sbt/1.0/plugins/
-COPY credentials.sbt /root/.sbt/0.13/plugins/
-COPY credentials.sbt /root/.sbt/1.0/plugins/
-COPY repositories /root/.sbt
-COPY .credentials.sub /root/.sbt/
-COPY entrypoint.sh /root/entrypoint.sh
+# Download and install SBT. Use a fixed version, but of course, sbt will fetch
+# the version associated with the project.
+wget https://github.com/sbt/sbt/releases/download/v1.8.2/sbt-1.8.2.tgz
+tar -xvf sbt-1.8.2.tgz
+export PATH=/app/sbt/bin:$PATH
 
-ENTRYPOINT ["/root/entrypoint.sh"]
+ENV SBT_CREDENTIALS="/app/.sbt/.credentials"
+ENV SBT_OPTS="-Dsbt.override.build.repos=true -Dsbt.ivy.home=.ivy2"
 
-CMD ["sbt"]
+RUN mkdir -p /app/.sbt/0.13/plugins/ /app/.sbt/1.0/plugins/
+COPY credentials.sbt /app/.sbt/0.13/plugins/
+COPY credentials.sbt /app/.sbt/1.0/plugins/
+COPY repositories /app/.sbt
+COPY .credentials.sub /app/.sbt/
+
+COPY setjdk /app/setjdk
+COPY entrypoint.sh /app/entrypoint.sh
+
+ENTRYPOINT ["/app/entrypoint.sh"]

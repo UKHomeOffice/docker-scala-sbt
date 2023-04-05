@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-envsubst < /root/.sbt/.credentials.sub > /root/.sbt/.credentials
-rm -f /root/.sbt/.credentials.sub
-mkdir -p /root/.ivy2/
-cp /root/.sbt/.credentials /root/.ivy2/.credentials
+envsubst < /app/.sbt/.credentials.sub > /app/.sbt/.credentials
+rm -f /app/.sbt/.credentials.sub
+mkdir -p /app/.ivy2/
+cp /app/.sbt/.credentials /app/.ivy2/.credentials
 
 exec "$@"
