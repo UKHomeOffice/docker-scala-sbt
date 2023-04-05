@@ -8,7 +8,7 @@ platform:
   arch: amd64
 
 steps:
-  - build:
+  - name: build
     environment:
       DOCKER_USERNAME: ukhomeofficedigital+drone
     image: quay.io/ukhomeofficedigital/drone-docker
@@ -21,7 +21,7 @@ steps:
     when:
       event: push
 
-  - build_tag:
+  - name: build_tag
     environment:
       DOCKER_USERNAME: ukhomeofficedigital+drone
     image: quay.io/ukhomeofficedigital/drone-docker
