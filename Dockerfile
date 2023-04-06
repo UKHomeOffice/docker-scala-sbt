@@ -19,17 +19,10 @@ WORKDIR /app
 RUN wget https://github.com/sbt/sbt/releases/download/v1.8.2/sbt-1.8.2.tgz
 RUN tar -xvf sbt-1.8.2.tgz
 
-ENV SBT_CREDENTIALS="/app/.sbt/.credentials"
-ENV SBT_OPTS="-Dsbt.override.build.repos=true -Dsbt.ivy.home=.ivy2"
 ENV PATH="/app/sbt/bin:$PATH"
 
-RUN mkdir -p /app/.sbt/0.13/plugins/ /app/.sbt/1.0/plugins/
-COPY credentials.sbt /app/.sbt/0.13/plugins/
-COPY credentials.sbt /app/.sbt/1.0/plugins/
-COPY repositories /app/.sbt
-COPY .credentials.sub /app/.sbt/
-
-COPY setjdk /app/setjdk
+RUN mkdir -p /app/.sbt /app/.ivy2
+COPY repositories /app/.sbt/repositories
 COPY entrypoint.sh /app/entrypoint.sh
 
 ENTRYPOINT ["/app/entrypoint.sh"]
