@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Add sbt command to path
-export PATH=/app/sbt/bin:$PATH
-
 # Select project's desired JDK and configure it
 case $JRE_VERSION in
 
@@ -17,14 +14,11 @@ case $JRE_VERSION in
     ;;
 esac
 
-export JRE_HOME=$JAVA_HOME/jre
-export PATH=$JAVA_HOME/bin:$PATH
+echo "-java-home $JAVA_HOME" >> /app/sbt/conf/sbtopts
 
 # Set ACP Artefactory as the proxy for dependency resolution
 echo -en "realm=Artifactory Realm\nhost=artifactory.digital.homeoffice.gov.uk\nuser=$ARTIFACTORY_USERNAME\npassword=$ARTIFACTORY_PASSWORD" > /app/.ivy2/.credentials
 mkdir /root/.ivy2
 cp /app/.ivy2/.credentials /root/.ivy2/.credentials
-export SBT_OPTS="-Duser.home=/app -Dsbt.override.build.repos=true -Dsbt.ivy.home=/app/.ivy2"
-export SBT_CREDENTIALS="/app/.ivy2/.credentials"
 
 exec "$@"

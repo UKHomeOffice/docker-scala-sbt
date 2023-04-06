@@ -20,6 +20,8 @@ RUN wget https://github.com/sbt/sbt/releases/download/v1.8.2/sbt-1.8.2.tgz
 RUN tar -xvf sbt-1.8.2.tgz
 
 ENV PATH="/app/sbt/bin:$PATH"
+ENV SBT_OPTS="-Duser.home=/app -Dsbt.override.build.repos=true -Dsbt.ivy.home=/app/.ivy2"
+ENV SBT_CREDENTIALS="/app/.ivy2/.credentials"
 
 RUN mkdir -p /app/.sbt /app/.ivy2
 COPY repositories /app/.sbt/repositories
