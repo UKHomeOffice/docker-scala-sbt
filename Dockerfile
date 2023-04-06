@@ -23,4 +23,10 @@ RUN mkdir -p /app/.sbt /app/.ivy2
 COPY repositories /app/.sbt/repositories
 COPY entrypoint.sh /app/entrypoint.sh
 
+ENV LANGUAGE=en_GB:en
+ENV GDM_LANG=en_GB.utf8
+ENV LANG=en_GB.UTF-8
+ENV SBT_CREDENTIALS="/app/.ivy2/.credentials"
+ENV SBT_OPTS="-Duser.home=/app -Dsbt.override.build.repos=true -Dsbt.ivy.home=/app/.ivy2"
+
 ENTRYPOINT ["/app/entrypoint.sh"]
