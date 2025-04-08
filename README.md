@@ -15,7 +15,7 @@ Contents of .drone.yml:
     image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/rtge/scala-sbt:latest
     environment:
       - ARTIFACTORY_USERNAME=username
-      - JRE_VERSION=17
+      - JRE_VERSION=21
     secrets:
       - ARTIFACTORY_PASSWORD
     when:
@@ -30,6 +30,6 @@ This build script expects ARTIFACTORY_PASSWORD to be set as a secret in Drone.
 
 Recent Changes:
   * Before you use the sbt command you need to call the entrypoint script. You either need to use `. entrypoint.sh` or `source entrypoint.sh` because it exports environmental variables required to make `sbt` work correctly in subsequent commands.
-  * In your .drone.yml, when refencing this project you need to set `JRE_VERSION` enviroment flag to either `8` (aka `1.8.0`), `11` or `17`. Sbt and Scala itself target the LTE versions of the JDK so there shouldnt be a need to refence versions in between.
-  * The version sbt bundled is `1.8.2` but sbt always downloads and uses the sbt associated with your project (from `project/build.properties`) so this is how you can control the version.
+  * In your .drone.yml, when refencing this project you need to set `JRE_VERSION` enviroment flag to either `8` (aka `1.8.0`), `11`, `17` or `21`. Sbt and Scala itself target the LTE versions of the JDK so there shouldnt be a need to refence versions in between.
+  * The version sbt bundled is `1.10.11` but sbt always downloads and uses the sbt associated with your project (from `project/build.properties`) so this is how you can control the version.
   * The latest image is hosted in Amazon ECR under the rtge project. It is no longer in quay.io
