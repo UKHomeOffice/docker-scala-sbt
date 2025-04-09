@@ -20,8 +20,8 @@ WORKDIR /app
 
 # Download and install SBT. Use a fixed version, but of course, sbt will fetch
 # the version associated with the project.
-RUN wget https://github.com/sbt/sbt/releases/download/v1.10.11/sbt-1.10.11.tgz
-RUN tar -xvf sbt-1.10.11.tgz
+RUN wget https://github.com/sbt/sbt/releases/download/v1.9.7/sbt-1.9.7.tgz
+RUN tar -xvf sbt-1.9.7.tgz
 
 RUN mkdir -p /app/.sbt /app/.ivy2
 COPY repositories /app/.sbt/repositories
@@ -31,6 +31,6 @@ ENV LANGUAGE=en_GB:en
 ENV GDM_LANG=en_GB.utf8
 ENV LANG=en_GB.UTF-8
 ENV SBT_CREDENTIALS="/app/.ivy2/.credentials"
-ENV SBT_OPTS="-Duser.home=/app -Dsbt.override.build.repos=true -Dsbt.ivy.home=/app/.ivy2"
+ENV SBT_OPTS="-Duser.home=/app -Dsbt.override.build.repos=false -Dsbt.ivy.home=/app/.ivy2"
 
 ENTRYPOINT ["/app/entrypoint.sh"]
