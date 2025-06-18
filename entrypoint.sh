@@ -18,6 +18,9 @@ case $JRE_VERSION in
   "21")
     export JAVA_HOME=/etc/alternatives/jre_21_openjdk/
     ;;
+  "24")
+    export JAVA_HOME=/etc/alternatives/jre_24_openjdk/
+    ;;
 esac
 
 export JRE_HOME=$JAVA_HOME/jre
